@@ -34,5 +34,66 @@ userRouter.post("/signup",async function (req,res) {
     }
 });
 
+userRouter.delete("/delete/:clerkId", async function (req, res) {
+    try {
+        const { clerkId } = req.params;
+        const deletedUser = await customerSchema.findOneAndDelete({ clerkId: clerkId });
+
+        if (!deletedUser) {
+            return res.status(404).json({
+                "message": "User not found",
+                "status": false
+            });
+        }
+
+        res.status(200).json({
+            "message": "User successfully deleted",
+            "status": true,
+            "deletedUser": deletedUser
+        });
+    } catch (err) {
+        console.log("error in delete:", err);
+        res.status(500).json({
+            "message": "Something went wrong while deleting user",
+            "status": false,
+            "error": err
+        });
+    }
+});
+
+
+userRouter.put("/update/:clerkId", async function (req, res) {
+    try {
+        const { clerkId } = req.params;
+        const updateData = req.body;
+
+        const updatedUser = await customerSchema.findOneAndUpdate(
+            { clerkId: clerkId },
+            updateData,
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({
+                "message": "User not found",
+                "status": false
+            });
+        }
+
+        res.status(200).json({
+            "message": "User successfully updated",
+            "status": true,
+            "updatedUser": updatedUser
+        });
+    } catch (err) {
+        console.log("error in update:", err);
+        res.status(500).json({
+            "message": "Something went wrong while updating user",
+            "status": false,
+            "error": err
+        });
+    }
+});
+
 
 module.exports=userRouter;
