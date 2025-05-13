@@ -1,8 +1,11 @@
-
+import React from 'react';
+import Navbar from '../Components/Navbar';
 
 const Home = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <>
+  
+    <div className=" mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold text-orange-600 mb-6">Welcome to CoSync</h1>
       <p className="text-lg text-gray-700 mb-4">
         Your collaborative workspace solution for teams of all sizes.
@@ -16,6 +19,8 @@ const Home = () => {
         </button>
       </div>
     </div>
+  
+    </>
   );
 };
 

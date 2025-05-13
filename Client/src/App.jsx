@@ -15,66 +15,58 @@ import LottieAnimation from "./Components/Signup.json";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <div className="pt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route
-              path="/sign-in"
-              element={
-                <div className="flex justify-around items-center h-full min-h-screen">
-                  <lottie-player
-                    src={LottieAnimation}
-                    background="transparent"
-                    speed="1"
-                    style={{ width: "500px", height: "500px" }}
-                    loop
-                    autoPlay
-                    ></lottie-player>
-                  <div className="flex flex-col gap-4">
-                  <SignIn redirectUrl="/dashboard" />
-                  </div>
-                </div>
-              }
-            />
-            <Route
-              path="/sign-up"
-              element={
-                <>
-
-                <div className="flex justify-around items-center h-full min-h-screen">
-                  <lottie-player
-                    src={LottieAnimation}
-                    background="transparent"
-                    speed="1"
-                    style={{ width: "500px", height: "500px" }}
-                    loop
-                    autoPlay
-                    ></lottie-player>
-                  <div className="flex flex-col gap-4">
-                    <SignUp redirectUrl="/welcome" />
-                  </div>
-                </div>
-                    </>
-              }
-            />
-
-            <Route
-              path="/dashboard"
-              element={
-                <div className="flex justify-center items-center h-full min-h-screen ">
-                  <Dashboard />
-                </div>
-              }
-            />
-            <Route path="/welcome" element={<Welcome />} />
-          </Routes>
-        </div>
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route
+          path="/sign-in"
+          element={
+            <div className="flex justify-around items-center h-full min-h-screen">
+              <lottie-player
+                src={LottieAnimation}
+                background="transparent"
+                speed="1"
+                style={{ width: "500px", height: "500px" }}
+                loop
+                autoPlay
+              ></lottie-player>
+              <div className="flex flex-col gap-4">
+                <SignIn redirectUrl="/dashboard" />
+              </div>
+            </div>
+          }
+        />
+        <Route
+          path="/sign-up"
+          element={
+            <div className="flex justify-around items-center h-full min-h-screen">
+              <lottie-player
+                src={LottieAnimation}
+                background="transparent"
+                speed="1"
+                style={{ width: "500px", height: "500px" }}
+                loop
+                autoPlay
+              ></lottie-player>
+              <div className="flex flex-col gap-4">
+                <SignUp redirectUrl="/welcome" />
+              </div>
+            </div>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <div className="flex justify-center items-center h-full min-h-screen">
+              <Dashboard />
+            </div>
+          }
+        />
+        <Route path="/welcome" element={<Welcome />} />
+      </Routes>
     </Router>
   );
 }
