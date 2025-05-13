@@ -29,7 +29,7 @@ userRouter.post("/signup",async function (req,res) {
           await newUser.save();
           res.status(201).json({"message":"successfull created","status":true, "UserData":newUser});
         }catch(err){
-            console.log("error");
+            console.log(err);
             res.status(405).json({"message":"something went wrong", "status":false, "error":err});
     }
 });
