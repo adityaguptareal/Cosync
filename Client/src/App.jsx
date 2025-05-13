@@ -11,16 +11,26 @@ import Welcome from "./Pages/Welcome";
 import "@lottiefiles/lottie-player";
 import React from "react";
 import LottieAnimation from "./Components/Signup.json";
+import Layout from "./Pages/Layout";
+import UserDashboard from "./Pages/UserDashboard";
+import WithoutNavLayout from "./Pages/WithoutNavLayout";
+import BookSpaces from "./Pages/BookSpaces";
+import BookEquipments from "./Pages/BookEquipments";
+import Support from "./Pages/Support";
 
 function App() {
   return (
     <Router>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/terms" element={<Terms />} />
+        <Route path="/" element={<WithoutNavLayout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
+        </Route>
+        <Route path="/dashboard" element={<Layout />}>
+          <Route index element={<UserDashboard />} />
+        </Route>
         <Route
           path="/sign-in"
           element={
@@ -66,6 +76,15 @@ function App() {
           }
         />
         <Route path="/welcome" element={<Welcome />} />
+        <Route path="/dashboard" element={<Layout/>}>
+        <Route index element={<UserDashboard />} />
+        <Route path="/dashboard/home" element={<Home />} />
+        <Route path="/dashboard/book-spaces" element={<BookSpaces />} />
+        <Route path="/dashboard/book-equipments" element={<BookEquipments />} />
+        <Route path="/dashboard/support" element={<Support />} />
+
+
+        </Route>
       </Routes>
     </Router>
   );
