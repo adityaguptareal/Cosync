@@ -1,8 +1,6 @@
 const {Router}=require('express');
 const userRouter=Router();
-const {customerSchema} =require('../Models/db');
-
-
+const {customerSchema} =require('../Models/User');
 
 userRouter.post("/signup",async function (req,res) {
     try{
