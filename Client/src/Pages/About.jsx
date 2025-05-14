@@ -1,25 +1,61 @@
+import React from "react";
+
+import {motion} from "framer-motion";
+
 const About = () => {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-orange-600 mb-6">About CoSync</h1>
-      <p className="text-lg text-gray-700 mb-4">
-        CoSync is a collaborative workspace platform designed to help teams work together more efficiently.
-        Our mission is to streamline communication and project management for organizations of all sizes.
-      </p>
-      <div className="grid md:grid-cols-2 gap-8 mt-8">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold text-orange-600 mb-3">Our Mission</h2>
-          <p className="text-gray-700">
-            We believe in creating tools that make collaboration seamless and intuitive. 
-            Our platform is built with the modern workplace in mind, supporting both in-office and remote teams.
-          </p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-xl font-semibold text-orange-600 mb-3">Our Team</h2>
-          <p className="text-gray-700">
-            Our diverse team of developers, designers, and product specialists work together 
-            to create the best possible experience for our users.
-          </p>
+    <div className="bg-gray-50 py-16 px-4 md:px-12 lg:px-24">
+      <div className="w-full justify-center">
+        <motion.h1
+          initial={{opacity: 0, y: -20}}
+          animate={{opacity: 1, y: 0}}
+          transition={{duration: 0.6}}
+          className="text-4xl md:text-5xl font-extrabold text-orange-600 text-center mb-6"
+        >
+          About CoSync
+        </motion.h1>
+        <motion.p
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{delay: 0.2, duration: 0.6}}
+          className="text-lg text-gray-600 max-w-3xl mx-auto text-center mb-12"
+        >
+          CCoSync connects people with the right co-working spaces—quickly, simply, and smartly.
+          We sync your work style with the perfect place to thrive.
+        </motion.p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <motion.div
+            initial={{opacity: 0, x: -30}}
+            whileInView={{opacity: 1, x: 0}}
+            transition={{duration: 0.6}}
+            viewport={{once: true}}
+          >
+            <h2 className="text-2xl font-semibold text-orange-500 mb-4">Our Mission</h2>
+            <p className="text-gray-700 mb-4">
+            To connect professionals, freelancers, startups, and remote teams with the perfect co-working spaces—bridging the gap between online convenience and offline productivity.
+            We strive to empower work communities by making inspiring, flexible, and accessible workspaces available to everyone, everywhere.
+            </p>
+            <h2 className="text-2xl font-semibold text-orange-500 mt-8 mb-4">Why Choose Us?</h2>
+            <ul className="list-disc list-inside text-gray-700 space-y-2">
+              <li>Reduction in booking errors</li>
+              <li>Faster reservation time</li>
+              <li>No waiting time and standing in the queue</li>
+              <li>Transparent revenue tracking for admin</li>
+            </ul>
+          </motion.div>
+          <motion.div
+            initial={{opacity: 0, x: 30}}
+            whileInView={{opacity: 1, x: 0}}
+            transition={{duration: 0.6}}
+            viewport={{once: true}}
+          >
+            <img
+              src="/About.jpeg"
+              alt="Modern co-working space"
+              className="rounded-2xl shadow-2xl w-full object-cover h-[400px] md:h-[500px]"
+            />
+          </motion.div>
         </div>
       </div>
     </div>

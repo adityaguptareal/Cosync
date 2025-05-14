@@ -28,6 +28,7 @@ import AdminSignup from "./Pages/AdminSignup";
 import AdminSignin from "./Pages/AdminSignin";
 import BookingListing from "./Pages/BookingListing";
 import MyBookingsPage from "./Pages/MyBookingsPage";
+import ErrorPage from "./Pages/ErrorPage";
 
 function App() {
   return (
@@ -165,6 +166,7 @@ function App() {
           />
  
         </Route>
+        <Route path="*" element={<ErrorPage/>}/>
       </Routes>
     </Router>
   );
