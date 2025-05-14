@@ -1,17 +1,15 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUser } from '@clerk/clerk-react';
 
 import SpaceCard from '../Components/SpaceCard';
 import EquipmentCard from '../Components/EquipmentCard';
-
+import BookingModal from '../Components/BookingModal';
 
 export default function BookingListing() {
   const [spaces, setSpaces] = useState([]);
   const [equipment, setEquipment] = useState([]);
   const [modalData, setModalData] = useState({ isOpen: false, asset: null, type: '' });
-
 
   const { user } = useUser();            
   const clerkUserId = user?.id || null;  
@@ -34,7 +32,6 @@ export default function BookingListing() {
   const closeModal = () => {
     setModalData({ isOpen: false, asset: null, type: '' });
   };
-
 
   if (!clerkUserId) return null;
 

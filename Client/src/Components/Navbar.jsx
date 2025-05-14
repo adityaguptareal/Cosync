@@ -27,49 +27,63 @@ const Navbar = () => {
           </div>
 
           {/* Desktop menu section */}
-          <div className="hidden md:flex items-center space-x-4">
-            <Link
-              to="/"
-              className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Contact
-            </Link>
-            <Link
-              to="/terms"
-              className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Terms
-            </Link>
-          </div>
+                <div className="hidden md:flex items-center space-x-4">
+                <Link
+                  to="/"
+                  className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/about"
+                  className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  About
+                </Link>
+                <Link
+                  to="/contact"
+                  className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Contact
+                </Link>
+                <Link
+                  to="/terms"
+                  className="text-gray-700 hover:text-orange-600 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Terms
+                </Link>
+                </div>
 
-          {/* Login/Signup buttons section */}
-          <div className="hidden md:flex items-center space-x-2">
-         <SignedIn>
-           <UserButton />
-         </SignedIn>
-            <SignedOut>
-              <button onClick={()=>navigate("/sign-up")} className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition duration-300">
-                Sign Up
-              </button>
-              <button onClick={()=>navigate("/sign-in")} className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition duration-300">
-                Sign in
-              </button>
-            </SignedOut>
-          </div>
+                {/* Login/Signup buttons section */}
+                <div className="hidden md:flex items-center space-x-2">
+                <SignedIn>
+                  <button
+                  className="bg-orange-600 cursor-pointer mr-5 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition duration-300"
+                  onClick={() => {
+                    navigate("/dashboard");
+                  }}
+                  >
+                  Dashboard
+                  </button>
+                  <UserButton />
+                </SignedIn>
+                <SignedOut>
+                  <button
+                  onClick={() => navigate("/sign-up")}
+                  className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition duration-300"
+                  >
+                  Sign Up
+                  </button>
+                  <button
+                  onClick={() => navigate("/sign-in")}
+                  className="bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-700 transition duration-300"
+                  >
+                  Sign in
+                  </button>
+                </SignedOut>
+                </div>
 
-          {/* Mobile menu button */}
+                {/* Mobile menu button */}
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={toggleMenu}

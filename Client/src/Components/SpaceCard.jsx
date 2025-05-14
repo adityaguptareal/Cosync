@@ -1,4 +1,5 @@
 import React from 'react';
+import BookingModal from '../Components/BookingModal';
 
 const SpaceCard = ({
   id,
@@ -22,10 +23,7 @@ const SpaceCard = ({
         <div className="font-bold text-xl mb-2 text-orange-600">{name}</div>
         <p className="text-gray-700 text-base">{description}</p>
         <button
-          onClick={() => {
-            console.log('Booking space with ID:', itemId);
-            alert(`Booking space with ID: ${itemId}`);
-          }}
+          onClick={() => onBookNow(itemId)}
           className="mt-4 cursor-pointer bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-full transition duration-300"
         >
           Book Now

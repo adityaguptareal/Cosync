@@ -15,7 +15,7 @@ bookingRoutes.post('/create', async (req, res) => {
     const booking = new Booking({
       user: userId,
       asset: assetId,
-      assetModel,
+      assetModel, // Ensure this field is saved
       date,
       quantity
     });
