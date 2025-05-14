@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
 
 import "./App.css";
@@ -22,6 +27,7 @@ import AdminDashboard from "./Pages/AdminDashboard";
 import AdminSignup from "./Pages/AdminSignup";
 import AdminSignin from "./Pages/AdminSignin";
 import BookingListing from "./Pages/BookingListing";
+import MyBookingsPage from "./Pages/MyBookingsPage";
 
 function App() {
   return (
@@ -47,7 +53,7 @@ function App() {
                 style={{ width: "500px", height: "500px" }}
                 loop
                 autoPlay
-              ></lottie-player>
+              />
               <div className="flex flex-col gap-4">
                 <SignIn redirectUrl="/dashboard" />
               </div>
@@ -65,14 +71,13 @@ function App() {
                 style={{ width: "500px", height: "500px" }}
                 loop
                 autoPlay
-              ></lottie-player>
+              />
               <div className="flex flex-col gap-4">
                 <SignUp redirectUrl="/welcome" />
               </div>
             </div>
           }
         />
-
         <Route path="/welcome" element={<Welcome />} />
 
         {/* User Dashboard Protected Routes */}
@@ -102,6 +107,14 @@ function App() {
             }
           />
           <Route
+            path="my-bookings"
+            element={
+              <SignedIn>
+                <MyBookingsPage />
+              </SignedIn>
+            }
+          />
+          <Route
             path="book-spaces"
             element={
               <SignedIn>
@@ -125,24 +138,32 @@ function App() {
               </SignedIn>
             }
           />
+ 
           <Route
             path="*"
             element={
               <SignedOut>
-                <Navigate to="/sign-up" />
+                <Navigate to="/sign-in" />
               </SignedOut>
             }
           />
         </Route>
-        <Route path="admin-sign-up" element={<AdminSignup/>} />
-        <Route path="admin-sign-in" element={<AdminSignin/>} />
+
+        {/* Admin Auth Pages */}
+        <Route path="/admin-sign-up" element={<AdminSignup />} />
+        <Route path="/admin-sign-in" element={<AdminSignin />} />
 
         {/* Admin Dashboard */}
         <Route path="/admin-dashboard" element={<Layout />}>
-          <Route index element={<AdminDashboard />} />
-        
-
-        {/* Admin Auth Routes - Dummy UI for now */}
+          <Route
+            index
+            element={
+              <SignedIn>
+                <AdminDashboard />
+              </SignedIn>
+            }
+          />
+ 
         </Route>
       </Routes>
     </Router>

@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   const menuItems = [
     { name: "Home", icon: <Home />, path: "/dashboard/home" },
-    { name: "Create Booking", icon: <TicketPercent />, path: "/dashboard/book-spaces" },
+    { name: "Create Booking", icon: <TicketPercent />, path: "/dashboard/listings" },
     { name: "Booking History", icon: <FileClock />, path: "/dashboard/book-equipments" },
     { name: "Raise ticket", icon: <TicketCheck />, path: "/dashboard/support" },
   ];
@@ -22,7 +22,7 @@ const Sidebar = () => {
   const isActive = (path) => location.pathname === path;
   return (
     <div
-      className={`h-screen bg-white text-grey transition-all px-2 duration-300 shadow-lg ${
+      className={`h-lvh fixed top-0 left-0 bottom-0 overflow-y-auto bg-white text-grey transition-all px-2 duration-300 shadow-lg ${
         isOpen ? "w-64" : "w-16"
       }`}
     >

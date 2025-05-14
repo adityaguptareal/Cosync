@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@clerk/clerk-react": "^5.31.2",
+    "@headlessui/react": "^2.2.3",
     "@lottiefiles/lottie-player": "^2.0.12",
     "@tailwindcss/vite": "^4.1.6",
     "axios": "^1.9.0",
