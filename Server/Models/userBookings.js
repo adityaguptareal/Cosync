@@ -8,8 +8,13 @@ const bookingSchema = new mongoose.Schema({
   },
   asset: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Asset',
-    required: true
+    required: true,
+    refPath: 'assetModel'
+  },
+  assetModel: {
+    type: String,
+    required: true,
+    enum: ['Space', 'Equipment']
   },
   date: {
     type: Date,

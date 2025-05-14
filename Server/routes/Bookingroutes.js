@@ -8,17 +8,21 @@ const bookingRoutes = Router();
 
 bookingRoutes.post('/create', async (req, res) => {
   try {
-    const { userId, assetId, date, quantity } = req.body;
+    const { userId, assetId, assetModel, date, quantity } = req.body;
+    if (!userId || !assetId || !assetModel || !date || quantity === undefined) {
+      return res.status(400).json({ message: "Missing required fields: userId, assetId, assetModel, date, quantity" });
+    }
     const booking = new Booking({
       user: userId,
       asset: assetId,
+      assetModel,
       date,
       quantity
     });
     await booking.save();
     res.status(201).json(booking);
   } catch (err) {
-    res.status(500).json({ message: "Error creating booking", error: err.message });
+    res.status(500).json({ message: "Error creating booking", error: err.message, details: err });
   }
 });
   

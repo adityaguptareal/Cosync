@@ -1,9 +1,8 @@
-
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const adminRoutes = require('./routes/adminRoute');
+const adminRoutes = require('./routes/AdminRoute');
 const webhookRoutes = require('./routes/ClerkWebhook');
 const bookingRoutes = require('./routes/Bookingroutes');
 
