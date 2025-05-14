@@ -1,4 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
+
 import "./App.css";
 import Navbar from "./Components/Navbar";
 import Home from "./Pages/Home";
@@ -6,47 +14,158 @@ import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Terms from "./Pages/Terms";
 import { SignIn, SignUp } from "@clerk/clerk-react";
-import Dashboard from "./Pages/UserDashboard";
-import Welcome from "./Pages/Welcome";     
+import UserDashboard from "./Pages/UserDashboard";
+import Welcome from "./Pages/Welcome";
+import "@lottiefiles/lottie-player";
+import LottieAnimation from "./Components/Signup.json";
+import Layout from "./Pages/Layout";
+import WithoutNavLayout from "./Pages/WithoutNavLayout";
+import BookSpaces from "./Pages/BookSpaces";
+import BookEquipments from "./Pages/BookEquipments";
+import Support from "./Pages/Support";
+import AdminDashboard from "./Pages/AdminDashboard";
+import AdminSignup from "./Pages/AdminSignup";
+import AdminSignin from "./Pages/AdminSignin";
+import BookingListing from "./Pages/BookingListing";
+import MyBookingsPage from "./Pages/MyBookingsPage";
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <div className="pt-16">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route
-              path="/sign-in"
-              element={
-                <div className="flex justify-center items-center h-full min-h-screen">
-                  <SignIn redirectUrl="/dashboard" />
-                </div>
-              }
-            />
-            <Route
-              path="/sign-up"
-              element={
-                <div className="flex flex-col justify-center items-center h-full min-h-screen">
-                  <h1>Signup to CoSync</h1>
-                  <SignUp redirectUrl="/welcome" />
-                </div>
-              }
-            />
+      <Routes>
+        {/* Public Routes Without Navbar */}
+        <Route path="/" element={<WithoutNavLayout />}>
+          <Route index element={<Home />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="terms" element={<Terms />} />
+        </Route>
 
-            <Route path="/dashboard" element={
-              <div className="flex justify-center items-center h-full min-h-screen ">
-              <Dashboard />
+        {/* User Auth Pages */}
+        <Route
+          path="/sign-in"
+          element={
+            <div className="flex justify-around items-center h-full min-h-screen">
+              <lottie-player
+                src={LottieAnimation}
+                background="transparent"
+                speed="1"
+                style={{ width: "500px", height: "500px" }}
+                loop
+                autoPlay
+              />
+              <div className="flex flex-col gap-4">
+                <SignIn redirectUrl="/dashboard" />
               </div>
-              } />
-            <Route path="/welcome" element={<Welcome />} />
-          </Routes>
-        </div>
-      </div>
+            </div>
+          }
+        />
+        <Route
+          path="/sign-up"
+          element={
+            <div className="flex justify-around items-center h-full min-h-screen">
+              <lottie-player
+                src={LottieAnimation}
+                background="transparent"
+                speed="1"
+                style={{ width: "500px", height: "500px" }}
+                loop
+                autoPlay
+              />
+              <div className="flex flex-col gap-4">
+                <SignUp redirectUrl="/welcome" />
+              </div>
+            </div>
+          }
+        />
+        <Route path="/welcome" element={<Welcome />} />
+
+        {/* User Dashboard Protected Routes */}
+        <Route path="/dashboard" element={<Layout />}>
+          <Route
+            index
+            element={
+              <SignedIn>
+                <UserDashboard />
+              </SignedIn>
+            }
+          />
+          <Route
+            path="home"
+            element={
+              <SignedIn>
+                <Home />
+              </SignedIn>
+            }
+          />
+          <Route
+            path="listings"
+            element={
+              <SignedIn>
+                <BookingListing />
+              </SignedIn>
+            }
+          />
+          <Route
+            path="my-bookings"
+            element={
+              <SignedIn>
+                <MyBookingsPage />
+              </SignedIn>
+            }
+          />
+          <Route
+            path="book-spaces"
+            element={
+              <SignedIn>
+                <BookSpaces />
+              </SignedIn>
+            }
+          />
+          <Route
+            path="book-equipments"
+            element={
+              <SignedIn>
+                <BookEquipments />
+              </SignedIn>
+            }
+          />
+          <Route
+            path="support"
+            element={
+              <SignedIn>
+                <Support />
+              </SignedIn>
+            }
+          />
+ 
+          <Route
+            path="*"
+            element={
+              <SignedOut>
+                <Navigate to="/sign-in" />
+              </SignedOut>
+            }
+          />
+        </Route>
+
+        {/* Admin Auth Pages */}
+        <Route path="/admin-sign-up" element={<AdminSignup />} />
+        <Route path="/admin-sign-in" element={<AdminSignin />} />
+
+        {/* Admin Dashboard */}
+        <Route path="/admin-dashboard" element={<Layout />}>
+          <Route
+            index
+            element={
+              <SignedIn>
+                <AdminDashboard />
+              </SignedIn>
+            }
+          />
+ 
+        </Route>
+      </Routes>
     </Router>
   );
 }
