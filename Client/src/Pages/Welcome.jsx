@@ -1,3 +1,13 @@
+import { Navigate } from "react-router-dom";
+
 export default function Welcome() {
-  return <div>Welcome to Cosync! </div>;
+  const fallbackUrl = "/sign-in";
+
+  return (
+    <div>
+      Welcome to Cosync!
+      <br />
+      If you are not signed in, <a href={fallbackUrl}>click here to sign in or sign up</a>.
+    </div>
+  );
 }
