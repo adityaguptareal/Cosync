@@ -18,8 +18,7 @@ const BookingModal = ({ isOpen, onClose, asset, itemType, userId }) => {
     try {
       const payload = {
         userId: userId,
-        assetId: asset._id,
-        assetModel: itemType, // Added assetModel field
+        assetId: asset._id,// Added assetModel field
         date,
         quantity: Number(quantity),
       };
