@@ -11,11 +11,7 @@ const bookingSchema = new mongoose.Schema({
     required: true,
     refPath: 'assetModel'
   },
-  assetModel: {
-    type: String,
-    required: true,
-    enum: ['Space', 'Equipment']
-  },
+  
   date: {
     type: Date,
     required: true
