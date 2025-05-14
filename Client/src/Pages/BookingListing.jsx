@@ -18,12 +18,12 @@ export default function BookingListing() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/api/v1/admin/spaces')
+      .get('https://cosync.onrender.com/api/v1/admin/spaces')
       .then(res => Array.isArray(res.data.data) ? setSpaces(res.data.data) : console.error(res.data))
       .catch(err => console.error('Error fetching spaces:', err));
 
     axios
-      .get('http://localhost:3000/api/v1/admin/equipment')
+      .get('https://cosync.onrender.com/api/v1/admin/equipment')
       .then(res => Array.isArray(res.data.data) ? setEquipment(res.data.data) : console.error(res.data))
       .catch(err => console.error('Error fetching equipment:', err));
   }, []);

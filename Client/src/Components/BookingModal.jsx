@@ -23,7 +23,7 @@ const BookingModal = ({ isOpen, onClose, asset, itemType, userId }) => {
         date,
         quantity: Number(quantity),
       };
-      await axios.post("http://localhost:3000/api/v1/bookings/create", payload);
+      await axios.post("https://cosync.onrender.com/api/v1/bookings/create", payload);
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
